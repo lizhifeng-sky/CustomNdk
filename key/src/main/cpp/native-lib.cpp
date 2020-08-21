@@ -39,6 +39,7 @@ Java_com_android_key_ReadKey_stringFromJNI(JNIEnv *env,
     return env->NewStringUTF(UNKNOWN);
 }
 
+//string -> jstring
 jstring str2jstring(JNIEnv *env, const char *pat) {
     //定义java String类 strClass
     jclass strClass = (env)->FindClass("java/lang/String");
@@ -54,6 +55,7 @@ jstring str2jstring(JNIEnv *env, const char *pat) {
     return (jstring) (env)->NewObject(strClass, ctorID, bytes, encoding);
 }
 
+//jstring -> string
 std::string jstring2str(JNIEnv *env, jstring jstr) {
     char *rtn = nullptr;
     jclass clsstring = env->FindClass("java/lang/String");
